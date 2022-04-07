@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <style>
+        i {
+            font-size: 50px;
+            /* border: 1px solid black; */
+            margin: -3px;
+            padding: 15px 2px;
+        }
+        .golden {
+            color: gold;
+        }
+
+        div {
+            /* border: 1px solid black; */
+            height: 85px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rating">
+        <i id="first" class="fas fa-star"></i>
+        <i id="second" class="fas fa-star"></i>
+        <i id="third" class="fas fa-star"></i>
+        <i id="fourth" class="fas fa-star"></i>
+        <i id="fifth" class="fas fa-star"></i> 
+    </div>
+    <!-- Задание. Используя заготовку, сделайте чтобы при наведении на вторую звезду
+    подсвечивались первая и вторая звезды. При наведени на третью звезду подсвечивались
+    первая, вторая и третья звезды, и т.д. 
+    mouseover - это событие срабатывает когда мы наводим на элемент.
+    mouseout - это событие срабатывает когда мы перестаем наводить на элемент.
+	Вы можете пойти более продвинутым путем, и получать предыдущий элемент 
+	например с помощью https://mzl.la/3a4SPlR
+    -->
+
+    <script>
+        let setI = document.querySelectorAll('i');
+        let rating = document.querySelector('.rating');
+        let firstStar = document.getElementById('first');
+        let secondStar = document.getElementById('second');
+        let thirdStar = document.getElementById('third');
+        let fourthStar = document.getElementById('fourth');
+        let fifthStar = document.getElementById('fifth');
+
+        let goldenClass = 'golden';
+
+        for (let i = 0; i < setI.length; i++) {
+            setI[i].addEventListener('mouseover', function(event) {
+
+                prevNode = event.target.previousElementSibling;
+
+                if (prevNode || prevNode === null) {
+                    event.target.classList.add(goldenClass);
+                }      
+            });
+        }
+
+              
+        rating.addEventListener('mouseout', function(event) {
+            
+            if (event.relatedTarget.className === 'rating') {
+                
+                for(let i = 0; i < rating.children.length; i++) {
+                    rating.children[i].classList.remove('golden');
+                }
+            }
+        });
+ 
+    </script>
+</body>
+</html>
