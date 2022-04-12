@@ -76,7 +76,7 @@ const products = {
 };
 
 let buttons = document.querySelectorAll('button');
-let product = document.querySelector('.products');
+let items = document.querySelector('.products');
 
 buttons.forEach(function(button) {
     button.addEventListener('click', clickHandler);
@@ -95,26 +95,14 @@ buttons.forEach(function(button) {
 </div> */}
 
 function clickHandler(event) {
-    
-    console.dir(event.target);
-    
-    let name = document.createElement('div');
-    let img = document.createElement('img');
-    let price = document.createElement('div');
-    let link = document.createElement('a');
-
-    product.insertAdjacentElement('afterbegin', link);
-    product.insertAdjacentElement('afterbegin', price);
-    product.insertAdjacentElement('afterbegin', img);
-    product.insertAdjacentElement('afterbegin', name);
-    
+    items.innerHTML = '';
     showCategory(event.target.dataset.type);
 
     //вам нужно очищать содержимое .products
     
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+  
 }
 
 /**
@@ -124,10 +112,16 @@ function clickHandler(event) {
  * @param {string} category сюда должно прилетать значение атрибута data-type у кнопки,
  * по которой кликнули.
  */
-function showCategory(category) {
+function showCategory(category) { 
+
     let arrayProduct = [];
-    arrayProduct = products.map((el) => el === category);
+    arrayProduct = Object.keys(products);
     console.log(arrayProduct);
+    arrayProduct.forEach(function(el) {
+        if (el === category) {
+            getProductMarkup(category);
+        }
+    });
 }
 
 /**
@@ -140,5 +134,29 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
+    // console.log(product);
+    for(let i = 0; i < products[product].length; i++) {
+        console.log(products[product][i]);
 
+        let item = document.createElement('div');
+        item.classList.add('product');
+        items.insertAdjacentElement('afterbegin', item);
+
+        let link = document.createElement('a');
+        link.setAttribute('href', `https://example.com/producs/${products[product][i].id}`);
+        link.innerText = 'Подробнее';
+        item.insertAdjacentElement('afterbegin', link);
+
+        let price = document.createElement('div');
+        price.innerText = products[product][i].price;
+        item.insertAdjacentElement('afterbegin', price);
+
+        let img = document.createElement('img');
+        img.setAttribute('src', products[product][i].imageUrl);
+        item.insertAdjacentElement('afterbegin', img);
+
+        let title = document.createElement('div');
+        title.innerText = `${products[product][i].name}`;
+        item.insertAdjacentElement('afterbegin', title); 
+    }
 }
