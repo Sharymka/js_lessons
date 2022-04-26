@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Humburger</title>
+</head>
+<body>
+    <div class="container" action=""> 
+        <div class = "order">
+            <h3 class="title">Создай свой гамбургер!</h3>
+            <div class="size">
+                <div>
+                    <input type="radio" name= "size" value="big" id ="size1" checked>
+                    <label for="size1">Большой</label>
+                </div>
+                <div>
+                    <input type="radio" name= "size" value="small" id ="size2">
+                    <label for="size2">Маленький</label>
+                </div> 
+            </div>
+            <div class="stuffing">
+                <div>
+                    <input type="radio" name= "stuffing" value="chees" id ="stuffing1" checked>
+                    <label for="stuffing1">Сыр</label>
+                </div>
+                <div>
+                    <input type="radio" name= "stuffing" value="salad" id ="stuffing2">
+                    <label for="stuffing2">Салат</label>
+                </div> 
+                <div>
+                    <input type="radio" name= "stuffing" value="potato" id ="stuffing3">
+                    <label for="stuffing3">Картофель</label>
+                </div>
+            </div>   
+            <div class="topping">
+                <fieldset>
+                    <legend>Дополнительные ингредиенты:</legend>
+                    <div>
+                        <input type="checkbox" id="topping1" name="condiment"
+                         >
+                        <label for="topping1">Приправа</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="topping2" name="mayonnaise">
+                        <label for="horns">Майонез</label>
+                    </div>
+                </fieldset>
+            </div>
+            <input type ="submit" class="order-btn" value="Заказать">
+            </input>
+            <div class="desc-order">
+                <p class="price"> Cтоимость: <span>110</span> рублей</p><br>
+                <p class="caloric" >Кaлорийность: <span>60</span> калорий</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js.js"></script>
+</body>
+</html>
