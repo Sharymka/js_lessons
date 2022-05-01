@@ -1,0 +1,41 @@
+<meta charset = "UTF-8"> 
+<script>
+
+    // асинхронные ф-ции никогда не выполнятся так как js из пропускает,
+    // выполняя дальнейший код , далее стоит return выход из ф-ции, к setTimeout мы никогда не вернемся
+    const async = (a)=> {
+        setTimeout(()=> {
+            const b = a +5;
+        }, 3000);
+        return 5000;
+    }
+
+   console.log(async(5));
+
+    //Promise - это объект в js, который обещает выполнени асинхронных ф-ций в любом случае
+    // в конструкторе объекта Promise всегда есть ф-ция у которой всегда два параметра resolve и reject, после resolve
+    // всегда запускается обработчик then, после reject - catch
+
+    const async2 = (a)=> {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                if(a) {
+                    resolve(a + 10); //после resolve всегда запускается обработчик промиса then
+                }else {
+                    reject("error");// после reject всегда запускается обработчик промиса catch
+                }
+            }, 3000);
+            return 5000;
+        });
+    }
+
+    async2(5)
+        .then(data=> {
+            console.log(data);
+        })
+        .catch(error=> {
+            console.log(error);
+        })
+
+
+</script>

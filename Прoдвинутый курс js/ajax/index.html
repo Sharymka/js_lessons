@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        // fetch - ф-ция которая отправляет ajax запрос и возвращает promise, c помощью fetch
+        // делаем коннект к нашему ресурсу json, получаем его исходный код
+
+        fetch("phone.json")
+            .then(text => text.json()) // text - исходник файла, 
+            //  ф-ция json преобразует строку json  в объект JS 
+            // и возвращает promise
+            .then(data => { // data массив объектов
+                data.forEach(item => {
+                    document.querySelector('div').insertAdjacentHTML('beforeend', `${item.name} имеет телефон ${item.phone}<hr>`);
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    </script>
+</body>
+</html>
