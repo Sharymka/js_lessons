@@ -8,7 +8,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .container {
@@ -28,6 +28,7 @@
         @include flex(flex-start, row, start);
         gap: 25px;
         height: 10px;
+        
     }
     &-link {
         list-style-type: none;
@@ -52,33 +53,6 @@
     min-width: 800px;
     color: gray;
 }
-.cart {
-    border: 1px solid rgb(175, 171, 171);
-    height: 50px;
-    &-items{
-        @include flex(space-between, column, start);
-        padding: 30px;
-        gap: 10px;
-        display: none;
-        background-color: rgb(249, 253, 251);
-        position: absolute;
-        z-index: 1; 
-        top: 140px;  
-        font-size: 24px;
-        box-shadow: -1px 1px 20px -1px rgba(17, 40, 57, 0.2);
-        &-descr {
-            @include flex(space-between, row, center);
-            gap: 20px;
-            font-size: 20px;
-            // border-bottom: 1px solid grey;
-        } 
-    }
-}
-
-.botton-pos {
-    @include flex(end, row, center);
-    height: 100%;
-}
 
 .cart-button {
     border-radius: 10px;
@@ -86,8 +60,62 @@
     padding: 5px 10px;
     border: 1px solid rgb(160, 160, 196);
     position: relative;
-    
-    
+}
+
+.cart {
+    border: 1px solid rgb(175, 171, 171);
+    height: 50px;
+    &-list {
+        @include flex(space-between, column, center);  
+        z-index: 1;
+        gap: 10px;
+        top: 140px; 
+        position: absolute;
+        display: none;
+        padding: 20px;
+        padding-bottom: 10px;
+        background-color: rgb(249, 253, 251);
+        box-shadow: -1px 1px 20px -1px rgba(17, 40, 57, 0.2);
+    }
+    &-items{
+        width: 100%;
+        @include flex(start, row, start);
+         gap: 25px;
+        font-size: 16px;
+        &-count {
+            width: 15px;
+            height: 15px;
+            padding-left: 5px;
+        }
+        &-descr {
+            @include flex(space-between, column, center);
+            gap: 10px;
+            font-size: 14px;
+            flex-basis: 90%;
+        }
+        &-delet {
+            padding: 0 5px;
+            height: 23px;
+            background-color: grey;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 2px;
+        }
+        &-img {
+            width: 60px;
+            height: 80px;
+        }
+         
+    }
+}
+
+hr {
+    margin: 10px 0;
+}
+.botton-pos {
+    @include flex(end, row, center);
+    height: 100%;
 }
 
 .goods {
