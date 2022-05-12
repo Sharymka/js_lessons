@@ -1,0 +1,106 @@
+@mixin flex($justify-content, $flex-direction, $align-items) {
+    display: flex;
+    justify-content: $justify-content;
+    flex-direction: $flex-direction;
+    align-items: $align-items;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: auto;
+    width: 1140px;
+}
+
+.menu {
+    background-color: gray;
+    height: 50px;
+    &-pos {
+        @include flex(start, row, center);
+        gap: 20px;
+        height: 100%;
+    }
+    &-list {
+        @include flex(flex-start, row, start);
+        gap: 25px;
+        height: 10px;
+    }
+    &-link {
+        list-style-type: none;
+        position: relative;       
+        &::before {
+            content: "";
+            border-radius: 20px;
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            background-color: aliceblue;
+            justify-content: flex-start;
+        }
+    }
+}
+
+.search {
+    padding: 5px 15px;
+    outline: none;
+    border-radius: 2px;
+    border: none;
+    min-width: 800px;
+    color: gray;
+}
+.cart {
+    border: 1px solid rgb(175, 171, 171);
+    height: 50px;
+}
+
+.botton-pos {
+    @include flex(end, row, center);
+    height: 100%;
+}
+
+.cart-button {
+    border-radius: 10px;
+    outline: none;
+    padding: 5px 10px;
+    border: 1px solid rgb(160, 160, 196);
+    
+    
+}
+
+.goods {
+    &-list{@include flex(space-between, row, center);
+    flex-wrap: wrap;
+    margin-top: 20px;
+    }
+    &-item {
+        padding: 10px;
+        @include flex(start, column, start);
+        box-shadow: -1px 1px 20px -1px rgba(17, 40, 57, 0.2);
+    }
+    &-img {
+       height: 150px;
+       width: 150px; 
+       box-shadow: -2px 2px 45px -1px rgba(17, 40, 57, 0.2);
+       padding: 5px;
+       
+    }
+    &-button {
+        align-self: flex-end;
+        justify-self: flex-end;
+        padding:  5px 10px;
+        border-radius: 10px;
+        border: 3px solid rgb(173, 175, 176)
+        // outline: none;
+        // background-color: aqua;
+    }
+
+    .car-item {
+        @include flex(space-between, row, center);
+        padding: 30px;
+    }
+
+
+}
