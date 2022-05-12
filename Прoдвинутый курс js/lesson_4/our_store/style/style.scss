@@ -154,9 +154,7 @@
          
     }
 }
-.invisible {
-    display: none;
-}
+
 
 hr {
     margin: 10px 0;
@@ -205,6 +203,10 @@ hr {
         // outline: none;
         // background-color: aqua;
     }
+}
+
+.invisible {
+    display: none;
 }
 hr {
     width: 100%;

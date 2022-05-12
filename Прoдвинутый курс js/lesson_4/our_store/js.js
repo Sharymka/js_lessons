@@ -177,6 +177,7 @@ class GoodsList {
   constructor(container = ".goods-list") {
     this.container = container;
     this.goods = []; // массив товаров из JSON документа
+    this.filtered = [];
     this.fetchGoods();
   }
 
@@ -191,6 +192,7 @@ class GoodsList {
       this.goods = data; // data объект js
       this.renderGoodsList();
       this.addEventBtn();
+      this.handlerSearch();
     });
   }
 
@@ -277,6 +279,30 @@ class GoodsList {
     }
     const eventEl = new EventTarget(name, price, id);
     eventEl.compare();
+  }
+
+  handlerSearch() {
+    let formSearch = document.querySelector(".menu-search");
+    formSearch.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.filterProduct(
+        formSearch.querySelector(".search-input").value.trim()
+      );
+    });
+  }
+
+  filterProduct(value) {
+    let regexp = new RegExp(value, "i");
+    this.filtered = this.goods.filter((good) => regexp.test(good.product_name));
+    console.log(this.filtered);
+    this.goods.forEach((good) => {
+      let goodHtml = document.getElementById(`${good.id_product}`);
+      if (!this.filtered.includes(good)) {
+        goodHtml.parentNode.classList.add("invisible");
+      } else {
+        goodHtml.parentNode.classList.remove("invisible");
+      }
+    });
   }
 }
 
