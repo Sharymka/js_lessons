@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>
+            <button>Button</button>
+        </p>
+    </div>
+    <script>
+        // сначало идет погружение от window до целевого объекта, далее идет всплытие
+        // let button = document.querySelector('button');
+        // button.addEventListener('click', function(event) {
+        //     alert(` Само событие ${event.eventPhase}`);
+        // });
+
+        // let div = document.querySelector('div');
+        // div.addEventListener('click', function(event) {
+        //     alert(` Событие на погружении ${event.eventPhase}`);
+        // }, true);
+
+        
+        // div.addEventListener('click', function(event) {
+        //     alert(` Событие на всплытии ${event.eventPhase}`);
+        // });
+
+        let button = document.querySelector('button');
+        button.addEventListener('click', function(event) {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.currentTarget);
+            event.stopPropagation();
+        });
+        
+        let p = document.querySelector('p');
+        p.addEventListener('click', function(event) {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.currentTarget);  //currentTarget объект на котором перехватываем событие
+        }, true);
+
+        let div = document.querySelector('div');
+        div.addEventListener('click', function(event) {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.currentTarget);  //currentTarget объект на котором перехватываем событие
+        }, true);
+
+        // let p = document.querySelector('p');
+        p.addEventListener('click', function(event) {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.currentTarget);  //currentTarget объект на котором перехватываем событие
+        });
+
+        // let div = document.querySelector('div');
+        div.addEventListener('click', function(event) {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.currentTarget);  //currentTarget объект на котором перехватываем событие
+        });
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="5">Lorem ipsum dolor sit amet, consectet</textarea>
+    <script>
+        "use strict";
+
+        // document.addEventListener('copy', function(event) {
+        //     const copiedText = document.getSelection().toString();
+        //     event.clipboardData.setData('text/plain', copiedText + 'Этот текс с сайта sitename.ru');
+        //     event.preventDefault();
+        // });
+
+        // document.addEventListener('cut', function() {
+        //     let selection = document.getSelection().toString();
+        //     event.clipboardData.setData('text/plain', selection.toString().toUpperCase());
+        //     event.preventDefault();
+        // });
+
+        window.addEventListener('resize', function() {
+            console.log(event.target.innerWidth, event.target.innerHeight);
+        })
+    </script>
+</body>
+</html>
