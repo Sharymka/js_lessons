@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<script>
+    let userJson = '{"name":"Игорь", "age":25, "isAdmin":true }';
+    console.log(userJson);
+
+    // преобразуем строку json в объект
+    let user1 = JSON.parse(userJson);
+    console.log(user1);
+
+    // хотим добавить какие-либо свойства объекта
+    user1.gender = 'men';
+    user1.dateCreated = '2022-04-24';
+    user1.address = {
+        city: 'Moscow',
+        postalCode: "146978",
+    }
+    console.log(user1);
+
+    // преобразуем объект в строку
+    // null пишем если хотим все свойства преобразовать, 4- количество пробелов
+    let user2 = JSON.stringify(user1,null,4);
+    console.log(user2);
+
+    // преобразуем объект в строку, но не со всеми параметрами
+    let user3 = JSON.stringify(user1, ["name", "age", "address" ,"city"]);
+    console.log(user3);
+
+    // преобразуем строку json в объект и при этом строковое значение dateCreated преобразуем в объект
+    let user4 = JSON.parse(user2, (key,value) => {
+        if(key === 'dateCreated') {
+            value = new Date(value);
+        }
+        return value;
+    });
+    console.log(user4);
+</script>

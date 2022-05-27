@@ -1,0 +1,213 @@
+@mixin flex($justify-content, $flex-direction, $align-items) {
+    display: flex;
+    justify-content: $justify-content;
+    flex-direction: $flex-direction;
+    align-items: $align-items;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+.container {
+    margin: auto;
+    width: 1140px;
+}
+
+.menu {
+    background-color: gray;
+    height: 50px;
+    &-search {
+        @include flex(start, row, center);
+        gap:3px;
+    }
+    &-pos {
+        @include flex(start, row, center);
+        gap: 20px;
+        height: 100%;
+    }
+    &-list {
+        @include flex(flex-start, row, start);
+        gap: 25px;
+        height: 10px;
+        
+    }
+    &-link {
+        list-style-type: none;
+        position: relative;       
+        &::before {
+            content: "";
+            border-radius: 20px;
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            background-color: aliceblue;
+            justify-content: flex-start;
+        }
+    }
+}
+
+.search-input {
+    padding: 5px 15px;
+    outline: none;
+    border-radius: 2px;
+     border: none;
+    min-width: 800px;
+    color: gray;
+}
+.search-btn {
+    fill: white;
+    outline: none;
+    transition: all 0.4s;
+    &:hover  {
+        transform: scale(1.2) rotate(90deg);
+    }
+}
+.submit {
+    margin-top: 7px;
+    background-color: gray;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    
+}
+
+.fa-solid  {
+    width: 20px;
+    height: 20px;
+}
+.cart-button {
+    border-radius: 10px;
+    outline: none;
+    padding: 5px 10px;
+    color: rgb(77, 76, 76);
+    border: 2px solid rgb(173, 175, 176);;
+    position: relative;
+    transition: all 0.3s;
+    &:hover {
+        transform: scale(1.2);
+        background-color: gray;
+        color: white;
+    }
+}
+    
+
+.cart {
+    border: 1px solid rgb(175, 171, 171);
+    height: 50px;
+    &-list {
+        @include flex(space-between, column, center);  
+        z-index: 1;
+        gap: 10px;
+        top: 120px;
+        min-width: 180px; 
+        min-height: 60px;
+        position: absolute;
+        padding: 20px;
+        padding-bottom: 10px;
+        background-color: rgb(249, 253, 251);
+        box-shadow: -1px 1px 20px -1px rgba(17, 40, 57, 0.2);
+        &::before {
+            content: "";
+            height: 17px;
+            width: 17px;
+            background-color: rgb(249, 253, 251);
+            z-index: 2;
+            position: absolute;
+            top: -9px;
+            left: 180px;
+            transform: rotate(45deg);
+            box-shadow: -4px -5px 6px -2px rgba(34, 60, 80, 0.12);
+        }
+    }
+    &-items{
+        width: 100%;
+        @include flex(start, row, start);
+         gap: 25px;
+        font-size: 16px;
+        &-count {
+            width: 15px;
+            height: 15px;
+            padding-left: 5px;
+        }
+        &-descr {
+            @include flex(space-between, column, center);
+            gap: 10px;
+            font-size: 14px;
+            flex-basis: 90%;
+        }
+        &-delet {
+            padding: 0 5px;
+            height: 23px;
+            background-color: grey;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 2px;
+        }
+        &-img {
+            width: 60px;
+            height: 80px;
+        }
+         
+    }
+}
+
+
+hr {
+    margin: 10px 0;
+}
+.button-pos {
+    @include flex(end, row, center);
+    height: 100%;
+}
+
+.goods {
+    &-list{@include flex(start, row, center);
+        gap: 50px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    &-item {
+        padding: 10px;
+        @include flex(start, column, start);
+        box-shadow: -1px 1px 20px -1px rgba(17, 40, 57, 0.2);
+        transition: all 0.3s;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    &-img {
+       height: 150px;
+       width: 150px; 
+       box-shadow: -2px 2px 45px -1px rgba(17, 40, 57, 0.2);
+       padding: 5px;
+       
+    }
+    &-button {
+        align-self: flex-end;
+        justify-self: flex-end;
+        padding:  5px 10px;
+        color: rgb(77, 76, 76);
+        border-radius: 10px;
+        border: 3px solid rgb(173, 175, 176);
+        transition: all 0.3s;
+        &:hover {
+            transform: scale(1.1);
+            background-color: gray;
+            color: white;
+        }
+
+        // outline: none;
+        // background-color: aqua;
+    }
+}
+
+.invisible {
+    display: none;
+}
+hr {
+    width: 100%;
+}
