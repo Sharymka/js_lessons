@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-for ="item of products">
+            <p>Название автомобиля - {{item.title}}</p> 
+            <p>Цена автомобиля - {{item.price}}</p>
+            
+            <img width="200" :src="item.img" :alt="item.title">
+            <button @click = "addProduct(item)">Купить</button>  <hr> 
+        </div>
+        <h1>Ваше имя {{name}}</h1>
+        <a :href="link">Перейти в поисковик</a>
+        <!-- <button @click='counter++'> ОК {{counter}}</button> -->
+        <h1>{{hello()}}</h1>
+        <button @click="increase" > Ок</button>
+        <span>Счетчик: {{counter}}</span>
+        <div v-show="show">
+            <h2 v-if="show">Элемент ввыводится</h2>
+            <h2 v-else="show">Элемент скрыт</h2>
+        </div>
+        <button @click="show = !show">Show/Hide</button>
+        <p>{{ counter > 10 ? 'Больше 10' : 'Меньше или равно 10' }}</p>
+        <p @mousemove = "getCoordinates()">Some Long long text {{x}} / {{y}}
+            <span @mousemove.stop >Текст который не реагирует на курсор мыши</span>
+        </p>
+        <input type="text" v-model.lazy = "name">
+        <div v-html = "my_link"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                name: "Иван",
+                link: "https://google.com",
+                counter: 0,
+                forCounter: 2,
+                show: false,
+                x: 0,
+                y: 0,
+                my_link: '<a href = "http://google.com"> Перейти в Google </a>',
+
+                products: [
+                    {
+                        title: 'bmw',
+                        price: 1200,
+                        img: 'img/bmw.webp'
+                    },
+                    {
+                        title: 'audi',
+                        price: 1100,
+                        img: 'img/audi.jpg'
+                    },
+                    {
+                        title: 'volkswagen',
+                        price: 900,
+                        img: 'img/volkswagen.jpg'
+                    }
+                ]
+            },
+
+            methods: {
+                hello(){
+                    return `Добрый день ${this.name}!`;
+                },
+
+                increase() {
+                    this.counter += this.forCounter;
+                },
+
+                getCoordinates() {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+
+                addProduct(item) {
+                    let itemCart = Object.assign(item, {quantity:1});
+                    console.log(itemCart);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
