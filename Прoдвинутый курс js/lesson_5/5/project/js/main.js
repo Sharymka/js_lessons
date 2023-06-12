@@ -60,7 +60,6 @@ const app = new Vue({
           this.cart.splice(index, 1);
         }
       });
-      console.log(this.cart);
     },
   },
 
